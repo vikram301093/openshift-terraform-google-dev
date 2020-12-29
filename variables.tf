@@ -15,7 +15,7 @@ variable "gcp_project" {
   default     = "terraform-227611"
 }
 variable "gcp_zone" {
-  type = "strin g"
+  type = string
   default = "europe-west3-a"
   description = "The zone to provision into"
 }
@@ -51,3 +51,36 @@ variable "no_of_worker_instances"{
   default = "3"
   description = "No of worker instances needed for OCP"
 }
+
+variable "dns_record_ttl" {
+  description = "The time-to-live for the site A records (seconds)"
+  type        = number
+  default     = 300
+}
+
+variable "openshift_url" {
+  default = "console-gcp-paas"
+  description = "URL of Openshift Dashboard"
+}
+
+variable "wildcard_paas" {
+  description = "Wildcard dns is needed for apps to host in openshift"
+  default = "*.gcp-paas"
+}
+
+variable "dns_managed_zone_name" {
+  description = "The name of the Cloud DNS Managed Zone in which to create the DNS A Records specified in 'var.custom_domain_names'. Only used if 'var.create_dns_entries' is true."
+  type        = string
+  default     = "replace-me"
+}
+
+variable "master_publicip_name" {
+  description = "Name of master public ip"
+  default = "master"
+}
+
+variable "infra_publicip_name" {
+  description = "Name of infra public ip"
+  default = "infra"
+}
+
