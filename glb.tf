@@ -1,7 +1,7 @@
 resource "google_compute_target_pool" "infra" {
   name = "infra-target-pool"
-  instances = [google_compute_instance.infra.*.self_link]
-  health_checks = [google_compute_http_health_check.infra.name]
+  instances = ["google_compute_instance.infra.*.self_link"]
+  health_checks = ["google_compute_http_health_check.infra.name"]
 }
 resource "google_compute_forwarding_rule" "http-infra" {
   name = "infra-www-http-forwarding-rule"
@@ -28,8 +28,8 @@ resource "google_compute_http_health_check" "infra" {
 
 resource "google_compute_target_pool" "master" {
   name = "master-target-pool"
-  instances = [google_compute_instance.master.*.self_link]
-  health_checks = [google_compute_http_health_check.master.name]
+  instances = ["google_compute_instance.master.*.self_link"]
+  health_checks = ["google_compute_http_health_check.master.name"]
 }
 resource "google_compute_forwarding_rule" "https-master" {
   name = "master-www-https-forwarding-rule"
